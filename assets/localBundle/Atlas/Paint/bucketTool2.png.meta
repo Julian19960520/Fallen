@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "ee5dab21-2570-432a-b89f-0f7dddab97ab",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "point",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 76,
+  "platformSettings": {},
+  "subMetas": {
+    "bucketTool2": {
+      "ver": "1.0.4",
+      "uuid": "4a06e3bf-c3f4-4a17-bfd1-1b3fdbe21c3a",
+      "rawTextureUuid": "ee5dab21-2570-432a-b89f-0f7dddab97ab",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 76,
+      "rawWidth": 52,
+      "rawHeight": 76,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

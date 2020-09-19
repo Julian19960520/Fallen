@@ -1,0 +1,47 @@
+{
+	"description": "项目配置文件。",
+	"miniprogramRoot": "./",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": false,
+		"newFeature": false
+	},
+	"compileType": "game",
+	"libVersion": "game",
+	"appid": "ttc6fbb04659c07d18",
+	"projectname": "Mouse",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": [],
+			"current": -1
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	},
+	"packOptions": {
+		"ignore": []
+	},
+	"cloudfunctionTemplateRoot": "",
+	"watchOptions": {
+		"ignore": []
+	},
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {}
+}

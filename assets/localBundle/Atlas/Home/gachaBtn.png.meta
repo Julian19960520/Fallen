@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "f998fa27-c5fc-488a-b71b-7d1d8547faad",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 79,
+  "height": 82,
+  "platformSettings": {},
+  "subMetas": {
+    "gachaBtn": {
+      "ver": "1.0.4",
+      "uuid": "854cc7f0-6f3b-4f7f-8389-fe5065da46b3",
+      "rawTextureUuid": "f998fa27-c5fc-488a-b71b-7d1d8547faad",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 79,
+      "height": 82,
+      "rawWidth": 79,
+      "rawHeight": 82,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

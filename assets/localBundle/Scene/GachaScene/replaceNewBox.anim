@@ -1,0 +1,136 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "replaceNewBox",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.65,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "scaleNode/boxBtn": {
+        "comps": {},
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.2,
+                "y": 0.8
+              }
+            },
+            {
+              "frame": 0.31666666666666665,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0.9,
+                "y": 1.1
+              }
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 1.5,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 1.5833333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.2,
+                "y": 0.8
+              }
+            },
+            {
+              "frame": 1.65,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ],
+          "x": [
+            {
+              "frame": 0.21666666666666667,
+              "value": 0
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": 84.446,
+              "curve": "constant"
+            },
+            {
+              "frame": 1.1833333333333333,
+              "value": 0
+            }
+          ],
+          "y": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.21666666666666667,
+              "value": 0,
+              "curve": [
+                0.6,
+                -0.27,
+                0.73,
+                0.04
+              ]
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": -552.931,
+              "curve": "constant"
+            },
+            {
+              "frame": 1.1833333333333333,
+              "value": 438.646,
+              "curve": "quadIn"
+            },
+            {
+              "frame": 1.5,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "scaleNode/boxBtn/boxTop": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 0.7,
+                "value": null
+              }
+            ]
+          }
+        },
+        "props": {}
+      }
+    }
+  },
+  "events": []
+}

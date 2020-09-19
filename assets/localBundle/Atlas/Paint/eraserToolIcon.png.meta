@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "253f24ef-60b4-4478-a622-816575f7523f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 64,
+  "height": 64,
+  "platformSettings": {},
+  "subMetas": {
+    "eraserToolIcon": {
+      "ver": "1.0.4",
+      "uuid": "b7a0727c-5d2b-4656-a023-6fe26d082868",
+      "rawTextureUuid": "253f24ef-60b4-4478-a622-816575f7523f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 64,
+      "height": 64,
+      "rawWidth": 64,
+      "rawHeight": 64,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
