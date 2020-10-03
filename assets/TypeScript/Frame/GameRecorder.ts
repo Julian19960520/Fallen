@@ -141,12 +141,12 @@ export namespace GameRecorder {
         Top.showToast("分享录屏准备中");
         Top.blockInput(true, "GameRecorder.share");
         crossPlatform.shareAppMessage({
-            title: "节奏打地鼠", 
+            title: "坠落骑士", 
             channel:"video",
             extra:{
                 videoPath:videoPath,
-                videoTopics:["节奏打地鼠"],
-                hashtag_list:["节奏打地鼠"],
+                videoTopics:["坠落其实"],
+                hashtag_list:["坠落骑士"],
                 withVideoId: true,
             },
             success:(res)=>{

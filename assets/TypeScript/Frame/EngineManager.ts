@@ -6,7 +6,7 @@ const {ccclass, property} = cc._decorator;
 export default class EngineManager extends cc.Component {
     public static Ins:EngineManager;
     @property(cc.Camera)
-    public mainCamera:cc.Camera;
+    public mainCamera:cc.Camera = null;
     public onLoad(){
         EngineManager.Ins = this;
         FightSystem.init();

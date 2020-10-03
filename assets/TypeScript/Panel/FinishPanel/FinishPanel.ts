@@ -11,7 +11,7 @@ import { GameRecorder } from "../../Frame/GameRecorder";
 import Top from "../../Frame/Top";
 import { Sound } from "../../Frame/Sound";
 import { Config } from "../../Frame/Config";
-import { TGA } from "../../TGA";
+
 import { Util } from "../../Frame/Util";
 import Player from "../../Game/Player";
 import Star from "./Star";

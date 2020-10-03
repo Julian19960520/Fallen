@@ -1,25 +1,6 @@
 import { systemInfo, crossPlatform } from "./CrossPlatform";
 
 export namespace Util{
-    let instantPromiseCache = new Map<string, Promise<any>>();
-    // export function instantPrefab(path:string){
-    //     return new Promise<cc.Node>((resolve, reject)=>{
-    //         let loadResPromise = null;
-    //         if(instantPromiseCache.has(path)){
-    //             loadResPromise = instantPromiseCache.get(path);
-    //         }else{
-    //             loadResPromise = loadRes(path, cc.Prefab);
-    //             instantPromiseCache.set(path, loadResPromise);
-    //         }
-    //         loadResPromise.then((prefab:cc.Node) => {
-    //             instantPromiseCache.delete(path);
-    //             let node:cc.Node = cc.instantiate(prefab);
-    //             node.name = path.substr(path.lastIndexOf("/")+1);
-    //             node.position = cc.Vec2.ZERO;
-    //             resolve(node);
-    //         }).catch(reject);
-    //     });
-    // }
     //读取bundle内资源，优先读取本地包，没有则尝试远程包
     export function loadBundleRes(path:string, type:cc.Asset, call:Function): void;
     export function loadBundleRes(path:string, call:Function, foobar?): void;
@@ -67,18 +48,6 @@ export namespace Util{
             });
         }
     }
-
-    export function loadRes(path:string, type:typeof cc.Asset){
-        return new Promise<any>((resolve, reject)=>{
-            cc.loader.loadRes(path, type, (err, asset) => {
-                if (err) {
-                    reject(err);
-                }else{
-                    resolve(asset);
-                }
-            });
-        })
-    }
     export function rawUrl(name){
         var path = cc.url.raw(name);
         if (cc.loader.md5Pipe) {
@@ -109,7 +78,7 @@ export namespace Util{
         _customEvent.detail = detail;
         return _customEvent;
     }
-    export function radian(vec2:cc.Vec2){
+    export function vec2ToRadian(vec2:cc.Vec2){
         if(vec2.x == 0 && vec2.y == 0){
             return 0;
         }
@@ -119,8 +88,8 @@ export namespace Util{
         }
         return radian;
     }
-    export function angle(vec2:cc.Vec2){
-        return radian(vec2)*180/Math.PI;
+    export function  vec2Toangle(vec2:cc.Vec2){
+        return vec2ToRadian(vec2)*180/Math.PI;
     }
     export function radToVec2(rad){
         return cc.v2(Math.cos(rad), Math.sin(rad));
@@ -337,6 +306,23 @@ export namespace Util{
             return tar;
         }
     }
+    //以node为prefab，复制出多个同样的兄弟node，使得兄弟数量达到cnt，并对每个兄弟调用call
+    export function makeBro(prefab:cc.Node, cnt:number, call:(node:cc.Node, idx:number)=>void){
+        let parent = prefab.parent;
+        while(parent.childrenCount < cnt){
+            let node = cc.instantiate(prefab);
+            parent.addChild(node);
+        }
+        for(let i=0;i<parent.childrenCount;i++){
+            let child = parent.children[i];
+            if(i<cnt){
+                child.active = true;
+                call(child, i);
+            }else{
+                child.active = false;
+            }
+        }
+    }
     //计算nodeA相对nodeB的相对坐标。即如果把NodeA放到NodeB下，返回NodeA的坐标
     export function convertPosition(nodeA:cc.Node, nodeB:cc.Node, offset=cc.Vec2.ZERO){
         let res = cc.v2();
@@ -420,20 +406,7 @@ export namespace Util{
             })
         }
     }
-    // export function grayfiyNode(node:cc.Node, gray:boolean){
-    //     // let state = gray ? cc.Sprite.State.GRAY : cc.Sprite.State.NORMAL;
-    //     let mat:cc.Material = null;
-    //     if(gray){
-    //         mat = cc.Material["getInstantiatedBuiltinMaterial"]('2d-gray-sprite', node);
-    //     }else{
-    //         mat = cc.Material["getBuiltinMaterial"]('2d-sprite', node);
-    //     }
-    //     let sprites = node.getComponentsInChildren(cc.Sprite).concat(node.getComponents(cc.Sprite));
-    //     for(let i=0;i<sprites.length;i++){
-    //         sprites[i].setMaterial(0, mat);
-    //     }
-    // }
-    
+
     export function compareSDKVersion(version:string){
         if(!systemInfo) return true;
         let sdkVersion = systemInfo.SDKVersion;
@@ -761,7 +734,7 @@ export namespace Util{
             }
             return pixels;
         }else{
-            return new Uint8Array();
+            return new Uint8Array(0);
         }
     }
 }

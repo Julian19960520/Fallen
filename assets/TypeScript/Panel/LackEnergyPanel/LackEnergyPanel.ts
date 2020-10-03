@@ -11,7 +11,7 @@ import SceneManager from "../../Frame/SceneManager";
 import Panel from "../../Frame/Panel";
 import GainEnergyPanel from "../GainEnergyPanel/GainEnergyPanel";
 import Player from "../../Game/Player";
-import { TGA } from "../../TGA";
+import { TGA } from "../../Game/TGA";
 
 const {ccclass, property} = cc._decorator;
 

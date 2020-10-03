@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "0931beb7-ccc1-46f5-9444-f5a18e07d97a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "point",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 22,
+  "height": 20,
+  "platformSettings": {},
+  "subMetas": {
+    "HEROBASE2": {
+      "ver": "1.0.4",
+      "uuid": "97e7da02-8a70-4bba-b4f1-1f77dc489331",
+      "rawTextureUuid": "0931beb7-ccc1-46f5-9444-f5a18e07d97a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 22,
+      "height": 20,
+      "rawWidth": 22,
+      "rawHeight": 20,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

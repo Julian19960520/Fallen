@@ -2,7 +2,8 @@ import { tt, crossPlatform, systemInfo, AppName, wx } from "./CrossPlatform";
 import Top from "./Top";
 import { Util } from "./Util";
 import Env from "../Game/Env";
-import { TGA } from "../TGA";
+import { TGA } from "../Game/TGA";
+
 
 export namespace AdUnitId{
     export let FreeCoin = "1f2a4ppm2abh4bgeal";

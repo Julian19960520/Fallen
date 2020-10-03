@@ -1,3 +1,4 @@
+import { Config } from "../Frame/Config";
 import { crossPlatform } from "../Frame/CrossPlatform";
 import { Util } from "../Frame/Util";
 
@@ -13,6 +14,32 @@ export class HeroData{
     id:number;
     unlockPayCnt:number;
     unlock:boolean;
+}
+class LvlMng{
+    lvl = 1;
+    stage = 1;
+    passLvl(){
+        let stageConf = Config.getStageConf(this.stage);
+        let idx = stageConf.lvls.indexOf(this.lvl);
+        if(idx+1 < stageConf.lvls.length){
+            this.lvl = stageConf.lvls[idx+1];
+        }else{
+            this.stage++;
+            stageConf = Config.getStageConf(this.stage);
+            this.lvl = stageConf[0];
+        }
+    }
+    parseData(data){
+        this.lvl = data.lvl || 1;
+        this.stage = data.stage || 1;
+    }
+
+    makeData(){
+        return {
+            lvl:this.lvl,
+            stage:this.stage,
+        }
+    }
 }
 class HeroMng{
     curHeroId = 1;
@@ -134,9 +161,11 @@ class EnergyMng{
 
 export namespace Player{
 
+    export let lvlMng = new LvlMng();
     export let heroMng = new HeroMng();
     export let energyMng = new EnergyMng();
     export let coinMng = new CoinMng();
+
     export function init(){
         energyMng.runEnergyThread();
     }
@@ -170,14 +199,16 @@ export namespace Player{
     }
     export function parseData(data){
         data = data || {};
+        lvlMng.parseData(data.lvlMng || {});
         heroMng.parseData(data.heroMng || {});
         energyMng.parseData(data.energyMng || {});
         coinMng.parseData(data.coinMng || {});
     }
     export function makeData(){
         return {
-            energy:energyMng.makeData(),
+            lvlMng:lvlMng.makeData(),
             heroMng:heroMng.makeData(),
+            energy:energyMng.makeData(),
             coinMng:coinMng.makeData(),
         }
     }

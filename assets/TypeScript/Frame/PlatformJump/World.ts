@@ -1,5 +1,7 @@
+import BrickPlatform from "../../Scene/GameScene/BrickPlatform";
+import Teeth from "../../Scene/GameScene/Teeth";
 import CameraCtrl from "../CameraCtrl";
-import { LvlConf } from "../Config";
+import { LvlLayout } from "../Config";
 // Learn TypeScript:
 //  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
 // Learn Attribute:
@@ -22,39 +24,45 @@ export default class World extends cc.Component {
     public static GAME_RESUME = "GAME_RESUME";
     static playing = false;
     static Ins:World = null;
+
+    @property(BrickPlatform)
+    topPlatform:BrickPlatform = null;
     @property(Pool)
     groundPool:Pool = null;
     @property(Pool)
     wallPool:Pool = null;
     @property(Hero)
     hero:Hero = null;
-    @property(cc.Node)
-    limit:cc.Node = null;
+    @property(Teeth)
+    teeth:Teeth = null;
     @property(CameraCtrl)
     worldCamera:CameraCtrl = null;
 
-    moveSpeed = 200;
-
-    conf:LvlConf = null;
-
+    lvlLayout:LvlLayout = null;
     openObjList:cc.Node[] = [];
     obj2NodeMap = new Map<any, cc.Node>();
     onLoad () {
         World.Ins = this;
         World.playing = false;
         cc.director.getCollisionManager().enabled = true;
-        this.worldCamera.target = this.limit;
+        this.worldCamera.target = this.teeth.node;
     }
     onDestroy(){
         World.Ins = null;
     }
 
-    play(conf:LvlConf){
-        this.conf = conf;
+    play(lvlLayout:LvlLayout){
+        this.lvlLayout = lvlLayout;
         World.playing = true;
-        let maxY = conf.objList[conf.objList.length-1].y;
-        this.hero.node.y = maxY;
-        this.limit.y = maxY;
+        let top = lvlLayout.objList[lvlLayout.objList.length-1];
+        this.topPlatform.node.y = top.y+200;
+        this.hero.node.y = this.topPlatform.node.y+50;
+        this.teeth.node.y = this.hero.node.y;
+        this.topPlatform.setCnt(9);
+        this.teeth.moving = false;
+        this.topPlatform.shakeAndFall(()=>{
+            this.teeth.moving = true;
+        });
     }
     pause(){
         if(World.playing){
@@ -74,10 +82,7 @@ export default class World extends cc.Component {
         if(!World.playing){
             return;
         }
-        this.limit.y -= dt*this.moveSpeed;
-        if(this.limit.y < 400){
-            this.limit.y = 400;
-        }
+
         let pos = Util.convertPosition(this.worldCamera.node, this.node);
         let topY = pos.y + ScreenRect.height/2;
         let bottomY = pos.y - ScreenRect.height/2;
@@ -97,8 +102,8 @@ export default class World extends cc.Component {
             }
         }
         //增加移入屏幕的物体
-        for(let i=0; i<this.conf.objList.length; i++){
-            let obj = this.conf.objList[i];
+        for(let i=0; i<this.lvlLayout.objList.length; i++){
+            let obj = this.lvlLayout.objList[i];
             if(obj.y>bottomY && obj.y<topY){
                 let idx = this.openObjList.indexOf(obj);
                 if(idx<0){

@@ -1,18 +1,20 @@
+import { Util } from "./Util";
+
 export class HeroConf{
 	id:number;
 	name:string;
 	unlockType:string;
 	unlockCnt:number;
 }
-
 export class ColorData{
     id:number|string;
     name:string;
     color:cc.Color;
 }
-export class LvlConf{
+export class LvlLayout{
     objList:any[] = [];
 }
+
 export namespace Config{
 	//英雄
 	export let heros:HeroConf[] = [
@@ -25,17 +27,50 @@ export namespace Config{
 	]
 	export function getHeroConf(id){
 		for(let i=0;i<heros.length;i++){
-			let hero = this.heros[i];
+			let hero = heros[i];
 			if(hero.id = id){
 				return hero;
 			}
 		}
 		return heros[0];
     }
+    //章节
+    export let stages = [
+        {id:1, name:"幽静森林", lvls:[1,2,3,4,5,6,7,8]},
+        {id:2, name:"废弃矿坑", lvls:[1,1,1,2,1,1,1,3]},
+        {id:3, name:"夺命火山口", lvls:[1,1,1,2,1,1,1,3]},
+        {id:4, name:"钢铁城堡", lvls:[1,1,1,2,1,1,1,3]},
+        {id:5, name:"天空之城", lvls:[1,1,1,2,1,1,1,3]},
+    ]
+    export function getStageConf(id){
+		for(let i=0;i<stages.length;i++){
+			let stage = stages[i];
+			if(stage.id == id){
+				return stage;
+			}
+		}
+		return stages[0];
+    }
     //关卡
-    export let levelConf = [
-        {},
-    ];
+    export let lvls = [
+        {id:1, distance:2000, type:1},
+        {id:2, distance:2000, type:1},
+        {id:3, distance:2000, type:1},
+        {id:4, distance:2000, type:2},
+        {id:5, distance:2000, type:1},
+        {id:6, distance:2000, type:1},
+        {id:7, distance:2000, type:1},
+        {id:8, distance:2000, type:3},
+    ]
+    export function getLvlConf(id){
+		for(let i=0;i<lvls.length;i++){
+			let lvl = lvls[i];
+			if(lvl.id == id){
+				return lvl;
+			}
+		}
+		return lvls[0];
+    }
 	//颜色
 	export let colors:ColorData[] = [
         {id:1, name:'黑色', color:cc.color(0,0,0)},
@@ -73,5 +108,15 @@ export namespace Config{
 	]
 	export function getColorDataByID(id){
         return colors.find((data)=>{return data.id == id});
+    }
+    export function getLvlLayout(distance, type){
+        let cnt = Math.floor(distance/200);
+        let layout = new LvlLayout();
+        for(let i=0; i<cnt; i++){
+            let x = Util.randomInt(-300, 300);
+            let y = Util.randomInt(-30,30) + i*200 +200;
+            layout.objList.push({x:x, y:y,});
+        }
+        return layout;
     }
 }

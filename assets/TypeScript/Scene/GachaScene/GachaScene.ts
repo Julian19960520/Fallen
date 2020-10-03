@@ -17,7 +17,7 @@ import { Config } from "../../Frame/Config";
 import LackDiamondPanel from "../../Panel/LackDiamondPanel/LackDiamondPanel";
 import { Util } from "../../Frame/Util";
 import LackCoinPanel from "../../Panel/LackCoinPanel/LackCoinPanel";
-import { TGA } from "../../TGA";
+import { TGA } from "../../Game/TGA";
 
 const {ccclass, property} = cc._decorator;
 

@@ -2,10 +2,10 @@ import BaseGainPanel from "../BaseGainPanel/BaseGainPanel";
 
 import Panel from "../../Frame/Panel";
 import Button from "../../CustomUI/Button";
-import { TGA } from "../../TGA";
 import { GameRecorder } from "../../Frame/GameRecorder";
 import Top from "../../Frame/Top";
 import { Util } from "../../Frame/Util";
+import { TGA } from "../../Game/TGA";
 
 const {ccclass, menu, property} = cc._decorator;
 
